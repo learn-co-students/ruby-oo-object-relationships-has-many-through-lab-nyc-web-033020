@@ -14,12 +14,4 @@ class Song
     def self.all
         @@all
     end
-
-    def genre
-        #compile list of all genres
-    end
-
-    def artisit
-        #compile list of all artists
-    end
 end
