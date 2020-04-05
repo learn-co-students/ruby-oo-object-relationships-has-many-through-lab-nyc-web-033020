@@ -1,26 +1,31 @@
+#require 'pry'
 class Doctor
-    attr_reader :name 
+    attr_reader :name
     @@all = [ ]
     def initialize(name)
-        @name = name 
-        Doctor.all << self 
-    end 
+        @name = name
+        Doctor.all << self
+    end
 
     def self.all
         @@all
-    end 
+    end
 
-    def appointments 
-        Appointment.all.select do |app|
-            app.doctor == self  
-        end
-    end 
+    def appointments
+      #binding.pry
+        Appointment.all.select {|appointment| appointment.doctor == self} #.map{ |app| app.appointment }
+    end
+
 
     def new_appointment(date, patient)
-        Appointment.new(date, patient, self)
-    end 
+        Appointment.new(patient, date, self)
+    end
 
-    def patients 
-        #has many patients through appointments 
-    end 
-end 
+    def patients
+        #has many patients through appointments
+        Appointment.all.select do |appointment|
+          appointment.doctor == self
+        end.map{|app| app.patient}
+    end
+
+end
