@@ -22,9 +22,12 @@ class Artist
     end
 
     def genres
-        songs.map do |song|
+      songs.map do |song|
        song.genre
-    end
+      end
     end
 
+    def vaporwave
+      puts "VAPORWAVE"
+    end
 end
