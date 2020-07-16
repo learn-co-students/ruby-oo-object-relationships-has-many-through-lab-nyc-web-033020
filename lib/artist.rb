@@ -10,4 +10,16 @@ class Artist
     def self.all
         @@all
     end
+
+    def songs
+        Song.find_by_artist(self)
+    end
+
+    def new_song(name, genre)
+        Song.new(name, self, genre)
+    end
+
+    def genres
+        songs.map {|song| song.genre}
+    end
 end
